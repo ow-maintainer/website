@@ -1,0 +1,24 @@
+[
+    {
+        "id": "senior-rust-engineer",
+        "title": "Senior Rust Engineer",
+        "country": "Remote (EU/US)",
+        "type": "Full-time",
+        "is_external": false
+    },
+    {
+        "id": "blockchain-architect",
+        "title": "Blockchain Architect (Rust)",
+        "country": "Switzerland / Remote",
+        "type": "Contract",
+        "is_external": true,
+        "external_url": "https://linkedin.com/jobs/example-123"
+    },
+    {
+        "id": "systems-performance-engineer",
+        "title": "Systems Performance Engineer",
+        "country": "United States",
+        "type": "Full-time",
+        "is_external": false
+    }
+]

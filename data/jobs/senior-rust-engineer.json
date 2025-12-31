@@ -1,0 +1,9 @@
+{
+    "id": "senior-rust-engineer",
+    "title": "Senior Rust Engineer",
+    "country": "Remote (EU/US)",
+    "type": "Full-time",
+    "posted_date": "2024-01-15",
+    "description_html": "<h3>About the Role</h3><p>We are looking for a Senior Rust Engineer to lead the rewrite of a high-performance trading engine from C++ to Rust.</p><h3>Requirements</h3><ul><li>5+ years of systems programming experience.</li><li>Deep understanding of Rust memory safety and concurrency models.</li><li>Experience with low-latency networking.</li></ul>",
+    "apply_url": "mailto:careers@oxideworks.com"
+}

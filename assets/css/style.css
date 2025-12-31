@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply font-sans antialiased text-slate-900 bg-slate-50 dark:bg-slate-950 dark:text-slate-100;
+        overflow-x: hidden;
+    }
+}
+
+@layer components {
+
+    /* Glass Header Background - STRONG LIQUID EFFECT */
+    .header-liquid-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        overflow: hidden;
+        mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    }
+
+    .liquid-blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.6;
+        animation: float 20s infinite ease-in-out alternate;
+    }
+
+    .blob-teal {
+        top: -20%;
+        left: -10%;
+        width: 50vw;
+        height: 50vw;
+        background: radial-gradient(circle, rgba(0, 148, 148, 0.4), transparent 70%);
+    }
+
+    .blob-blue {
+        top: 10%;
+        right: -10%;
+        width: 40vw;
+        height: 40vw;
+        background: radial-gradient(circle, rgba(56, 189, 248, 0.3), transparent 70%);
+        animation-delay: -5s;
+    }
+
+    /* Standard Glass Card */
+    .glass-card {
+        @apply bg-white/10 dark:bg-white/5 backdrop-blur-xl border border-white/20 shadow-xl relative overflow-hidden;
+    }
+
+    .glass-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    }
+
+    .glass-card:hover {
+        @apply bg-white/15 border-white/30 shadow-2xl transition-all duration-300 transform -translate-y-1;
+    }
+
+    /* Header - Supermemory Style Transition */
+    .glass-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 50;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Smooth eased transition */
+
+        /* Initial: Transparent, No Border */
+        background-color: transparent;
+        border-bottom: 1px solid transparent;
+        backdrop-filter: blur(0px);
+    }
+
+    /* Scrolled State: Dark Glass, Blur, Subtle Border */
+    .glass-nav.scrolled {
+        background-color: rgba(15, 23, 42, 0.75);
+        /* Dark: 75% opacity */
+        backdrop-filter: blur(16px);
+        /* Strong blur */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Light Mode Scrolled */
+    :root:not(.dark) .glass-nav.scrolled {
+        background-color: rgba(255, 255, 255, 0.75);
+        /* Light: 75% opacity */
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    /* Animations */
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translate(0, 0) rotate(0deg);
+        }
+
+        50% {
+            transform: translate(10px, 20px) rotate(2deg);
+        }
+    }
+
+    @keyframes float-slow {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-15px);
+        }
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-float-slow {
+        animation: float-slow 8s ease-in-out infinite;
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 0.8s ease-out forwards;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* CSS Illustrations Utilities */
+    .code-window {
+        @apply bg-slate-900 rounded-lg border border-slate-700 font-mono text-xs p-3 shadow-inner overflow-hidden;
+    }
+
+    .code-dot {
+        @apply w-2 h-2 rounded-full inline-block mr-1;
+    }
+}
+
+/* Custom Selection Color */
+::selection {
+    @apply bg-rust/30 text-white;
+}

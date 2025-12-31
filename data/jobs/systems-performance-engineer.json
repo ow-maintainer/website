@@ -1,0 +1,9 @@
+{
+    "id": "systems-performance-engineer",
+    "title": "Systems Performance Engineer",
+    "country": "United States",
+    "type": "Full-time",
+    "posted_date": "2024-01-25",
+    "description_html": "<h3>About the Role</h3><p>Optimize mission-critical backend services for maximum throughput and minimal latency. You will work on low-level optimizations and kernel tuning.</p><h3>Requirements</h3><ul><li>Strong systems programming background in Rust and C.</li><li>Experience with performance profiling tools like perf and eBPF.</li><li>Background in distributed systems.</li></ul>",
+    "apply_url": "mailto:careers@oxideworks.com"
+}
