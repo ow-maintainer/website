@@ -73,7 +73,7 @@
         top: 0;
         left: 0;
         width: 100%;
-        z-index: 50;
+        z-index: 1000;
         transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         /* Smooth eased transition */
 
@@ -157,6 +157,71 @@
 }
 
 /* Custom Selection Color */
-::selection {
-    @apply bg-rust/30 text-white;
+/* Job Detail Content Styles */
+#job-description h3 {
+    @apply text-2xl font-bold mt-8 mb-4 text-rust;
+}
+
+#job-description p {
+    @apply mb-4 opacity-80 leading-relaxed;
+}
+
+#job-description ul {
+    @apply list-disc ml-6 mb-6 opacity-80;
+}
+
+#job-description li {
+    @apply mb-2;
+}
+
+/* Preloader Styles */
+#oxide-preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease-out, visibility 0.5s;
+}
+
+.dark #oxide-preloader {
+    background: #020617;
+}
+
+.preloader-logo {
+    width: 64px;
+    height: 64px;
+    background: #009494;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    font-size: 2rem;
+    font-style: italic;
+    animation: pulse-rust 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse-rust {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+        box-shadow: 0 0 20px rgba(0, 148, 148, 0.4);
+    }
+}
+
+/* Base fade for page load */
+body.loaded>*:not(#oxide-preloader) {
+    opacity: 1 !important;
+    transition: opacity 0.8s ease-out;
 }

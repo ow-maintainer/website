@@ -12,9 +12,13 @@ function renderJobs(jobs) {
     }
 
     jobs.forEach(job => {
-        const card = document.createElement('div');
-        card.className = 'glass-card p-6 rounded-xl border border-white/10 hover:border-rust/50 transition-all cursor-pointer group';
-        card.onclick = () => window.location.href = `job-detail.html?id=${job.id}`;
+        const card = document.createElement('a');
+
+        // Use relative path
+        const prefix = './';
+        card.href = `${prefix}job-detail.html?id=${job.id}`;
+
+        card.className = 'glass-card p-6 rounded-xl border border-white/10 hover:border-rust/50 transition-all cursor-pointer group block';
 
         card.innerHTML = `
             <div class="flex justify-between items-start mb-4">
@@ -33,27 +37,18 @@ function renderJobs(jobs) {
     });
 
     // Re-apply translations for dynamic content
-    if (window.OXIDE_TRANSLATIONS) {
-        // Manually trigger simple translation for new elements if main.js functions aren't exposed globally (though they aren't).
-        // Best approach in vanilla JS without modules: re-run the DOM scan logic. 
-        // We can just rely on main.js's "langChanged" event listener if we dispatch one, but this is initial render.
-        // We'll duplicate the small logic or better yet, make applyTranslations global in main.js. 
-        // For now, let's just grab the current language and apply.
-        const lang = localStorage.getItem('lang') || 'en';
-        const data = window.OXIDE_TRANSLATIONS[lang] || window.OXIDE_TRANSLATIONS['en'];
-        container.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (data[key]) el.textContent = data[key];
-        });
+    if (window.applyTranslations) {
+        window.applyTranslations(localStorage.getItem('lang') || 'en');
     }
 }
-// ... rest of file (loadJobDetail, initJobsListing) stays same ...
 
-function loadJobDetail() {
+function initJobDetail() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
     if (!id) {
-        window.location.href = 'jobs.html';
+        // Instead of hard redirect, use pushState handled by router if possible
+        window.history.pushState({}, '', 'jobs.html');
+        if (window.handleLocation) window.handleLocation();
         return;
     }
 
@@ -64,10 +59,13 @@ function loadJobDetail() {
 
     const job = window.OXIDE_JOBS_DETAILS[id];
 
+    const descriptionContainer = document.getElementById('job-description');
+    if (!descriptionContainer) return;
+
     if (!job) {
         const lang = localStorage.getItem('lang') || 'en';
         const data = window.OXIDE_TRANSLATIONS[lang] || window.OXIDE_TRANSLATIONS['en'];
-        document.getElementById('job-description').innerHTML = `<p>${data['job_not_found'] || 'Job not found.'}</p>`;
+        descriptionContainer.innerHTML = `<p>${data['job_not_found'] || 'Job not found.'}</p>`;
         return;
     }
 
@@ -76,17 +74,18 @@ function loadJobDetail() {
 
     document.getElementById('job-title').textContent = job.title;
     document.getElementById('job-meta').textContent = `${job.country} • ${job.type} • ${data['posted_on'] || 'Posted'} ${job.posted_date}`;
-    document.getElementById('job-description').innerHTML = job.description_html;
+    descriptionContainer.innerHTML = job.description_html;
 
     const applyBtn = document.getElementById('apply-btn');
     applyBtn.href = job.apply_url;
     if (job.is_external) {
         applyBtn.target = "_blank";
-        document.getElementById('external-note').classList.remove('hidden');
+        const externalNote = document.getElementById('external-note');
+        if (externalNote) externalNote.classList.remove('hidden');
     }
 }
 
-function initJobsListing() {
+function initJobsEngine() {
     // Check for data
     if (typeof window.OXIDE_JOBS_INDEX === 'undefined') {
         console.error('Jobs data missing. Make sure jobs.js is loaded.');
@@ -98,6 +97,8 @@ function initJobsListing() {
 
     const searchInput = document.getElementById('job-search');
     const countryFilter = document.getElementById('country-filter');
+
+    if (!searchInput || !countryFilter) return;
 
     const filterFunc = () => {
         const query = searchInput.value.toLowerCase();
@@ -111,11 +112,11 @@ function initJobsListing() {
         renderJobs(filtered);
     };
 
-    if (searchInput) searchInput.addEventListener('input', filterFunc);
-    if (countryFilter) countryFilter.addEventListener('change', filterFunc);
+    searchInput.addEventListener('input', filterFunc);
+    countryFilter.addEventListener('change', filterFunc);
 
     // Populate country filter uniquely
-    if (countryFilter && countryFilter.options.length <= 1) {
+    if (countryFilter.options.length <= 1) {
         const countries = [...new Set(allJobs.map(j => j.country))];
         countries.forEach(c => {
             const opt = document.createElement('option');
@@ -126,11 +127,7 @@ function initJobsListing() {
     }
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('jobs-container')) {
-        initJobsListing();
-    }
-    if (document.getElementById('job-detail-view')) {
-        loadJobDetail();
-    }
-});
+// Map them to window so router can find them
+window.initJobsEngine = initJobsEngine;
+window.initJobDetail = initJobDetail;
+
