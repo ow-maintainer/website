@@ -34,6 +34,7 @@
         'assets/translations/ur.js',
         'assets/translations/ja.js',
         'assets/translations/zh.js',
+        'assets/translations/pt.js',
         'assets/data/jobs.js',
         'assets/js/components.js',
         'assets/js/main.js',

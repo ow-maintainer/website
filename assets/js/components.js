@@ -37,6 +37,7 @@ class OxideHeader extends HTMLElement {
                                 <option value="fr">Français</option>
                                 <option value="ar">العربية</option>
                                 <option value="es">Español</option>
+                                <option value="pt">Português</option>
                                 <option value="hi">हिन्दी</option>
                                 <option value="ur">اردو</option>
                                 <option value="ja">日本語</option>
