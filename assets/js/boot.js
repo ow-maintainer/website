@@ -11,10 +11,7 @@
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = basePath + 'assets/css/style.css';
-    link.onload = () => {
-        // Make body visible once styles are loaded
-        document.body.style.visibility = 'visible';
-    };
+    // We do NOT reveal body here anymore. We wait for scripts (Tailwind).
     document.head.appendChild(link);
 
     // 2. Load necessary scripts in order
@@ -55,6 +52,9 @@
 
         // Dispatch event when everything is ready
         window.dispatchEvent(new CustomEvent('oxide-ready'));
+
+        // REVEAL BODY ONLY AFTER SCRIPTS (TAILWIND) ARE LOADED
+        document.body.style.visibility = 'visible';
     }
 
     init();

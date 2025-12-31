@@ -1,0 +1,29 @@
+<svg width="280" height="60" viewBox="0 0 280 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icon: Bold Symmetric Atomic Structure -->
+  <g id="icon" transform="translate(30, 30)">
+    
+    <!-- 3 Symmetric Orbits -->
+    <g stroke="#009494" stroke-width="2.5" opacity="0.6" fill="none">
+        <ellipse cx="0" cy="0" rx="22" ry="9"/>
+        <ellipse cx="0" cy="0" rx="22" ry="9" transform="rotate(60)"/>
+        <ellipse cx="0" cy="0" rx="22" ry="9" transform="rotate(120)"/>
+    </g>
+
+    <!-- Atoms -->
+    <circle cx="-22" cy="0" r="4.5" fill="#009494" stroke="white" stroke-width="0.5"/>
+    <circle cx="22" cy="0" r="4.5" fill="#009494" stroke="white" stroke-width="0.5"/>
+    <circle cx="-11" cy="-19" r="3.5" fill="#4fd1c5" stroke="white" stroke-width="0.5"/> 
+    <circle cx="11" cy="-19" r="3.5" fill="#4fd1c5" stroke="white" stroke-width="0.5"/>
+    <circle cx="0" cy="22" r="3.5" fill="#4fd1c5" stroke="white" stroke-width="0.5"/> 
+
+    <!-- Center Glow -->
+    <circle cx="0" cy="0" r="3" fill="#009494" opacity="0.3" filter="blur(1px)"/>
+  </g>
+  
+  <!-- Text Dark -->
+  <g id="text">
+    <text x="65" y="40" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="36" font-weight="900" fill="#0f172a" letter-spacing="-1.5">
+      oxide<tspan fill="#009494">works</tspan>
+    </text>
+  </g>
+</svg>

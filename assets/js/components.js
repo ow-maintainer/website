@@ -9,12 +9,21 @@ class OxideHeader extends HTMLElement {
 
         const prefix = './';
 
+        const updateLogo = () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            const logoImg = this.querySelector('#header-logo');
+            if (logoImg) {
+                // In dark mode we need white text (logo-light.svg)
+                // In light mode we need dark text (logo-dark.svg)
+                logoImg.src = isDark ? 'assets/img/logo-light.svg' : 'assets/img/logo-dark.svg';
+            }
+        };
+
         this.innerHTML = `
             <nav class="glass-nav">
-                <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-[1001]">
+                <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between relative z-[1001]">
                     <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='./'">
-                        <div class="w-8 h-8 bg-rust rounded-lg flex items-center justify-center font-bold text-white italic text-lg">O</div>
-                        <span class="font-bold text-2xl tracking-tight">OXIDEWORKS</span>
+                        <img id="header-logo" src="assets/img/logo-light.svg" alt="Oxideworks" class="h-10">
                     </div>
 
                     <div class="flex items-center gap-8">
@@ -38,11 +47,66 @@ class OxideHeader extends HTMLElement {
                             <button id="theme-toggle" class="p-2 rounded-full hover:bg-white/10 transition-colors flex items-center justify-center text-sm font-medium">
                                 <!-- Icon will be injected by main.js -->
                             </button>
+                            
+                            <!-- Mobile Menu Button -->
+                            <button id="mobile-menu-btn" class="md:hidden p-2 hover:bg-white/10 rounded-lg transition-colors text-rust">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
+
+                <!-- Mobile Menu Overlay -->
+                <div id="mobile-menu" class="fixed inset-0 bg-slate-900/95 backdrop-blur-lg z-[2000] transform transition-transform duration-300 translate-x-full md:hidden flex flex-col items-center justify-center gap-6 opacity-0 pointer-events-none">
+                   <button id="close-menu-btn" class="absolute top-8 right-6 p-2 hover:bg-white/10 rounded-lg text-rust">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                      </svg>
+                   </button>
+                   <a href="./" class="text-lg font-semibold ${isHome ? 'text-rust' : 'text-white hover:text-rust'} transition-colors" data-i18n="nav_home">Home</a>
+                   <a href="jobs.html" class="text-lg font-semibold ${isJobs ? 'text-rust' : 'text-white hover:text-rust'} transition-colors" data-i18n="nav_jobs">Jobs</a>
+                </div>
             </nav>
         `;
+
+        // Mobile Menu Logic
+        const mobileBtn = this.querySelector('#mobile-menu-btn');
+        const closeBtn = this.querySelector('#close-menu-btn');
+        const mobileMenu = this.querySelector('#mobile-menu');
+
+        const toggleMenu = (show) => {
+            if (show) {
+                mobileMenu.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            } else {
+                mobileMenu.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+            }
+        };
+
+        mobileBtn.addEventListener('click', () => toggleMenu(true));
+        closeBtn.addEventListener('click', () => toggleMenu(false));
+
+        // Close on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => toggleMenu(false));
+        });
+
+        // Initialize logo based on current theme
+        updateLogo();
+
+        // Observer for theme changes
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'class') {
+                    updateLogo();
+                }
+            });
+        });
+
+        observer.observe(document.documentElement, { attributes: true });
     }
 }
 
@@ -52,7 +116,7 @@ class OxideFooter extends HTMLElement {
             <footer class="py-12 border-t border-white/5 relative z-10 glass-card mt-12 bg-white/5">
                 <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
                     <div class="flex items-center gap-2">
-                        <div class="w-8 h-8 bg-rust rounded-lg flex items-center justify-center font-bold text-white italic text-sm">O</div>
+                        <img src="assets/img/logo-icon.svg" alt="Oxideworks" class="w-8 h-8">
                         <div class="text-sm opacity-50" data-i18n="footer_rights">© 2026 Oxideworks. All rights reserved.</div>
                     </div>
 
