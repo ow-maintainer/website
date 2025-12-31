@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Oxideworks</title>
+
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <style>
+        html { background: #f8fafc; }
+        html.dark { background: #020617; }
+        body { visibility: hidden; }
+    </style>
+    <script src="assets/js/boot.js"></script>
+</head>
+
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 flex flex-col min-h-screen">
+
+    <oxide-header></oxide-header>
+
+    <!-- 404 Content -->
+    <main class="flex-grow flex items-center justify-center relative overflow-hidden py-24">
+        <!-- Background Liquid Blobs -->
+        <div class="header-liquid-container opacity-50 pointer-events-none">
+            <div class="liquid-blob blob-teal"></div>
+            <div class="liquid-blob blob-blue"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <!-- Ferris Mascot -->
+            <div class="w-64 h-64 mx-auto mb-8 relative animate-float-slow">
+                <!-- Glass Background Shape -->
+                <div class="absolute inset-0 bg-teal-500/10 backdrop-blur-3xl rounded-full translate-y-4 translate-x-4 -z-10 border border-white/5">
+                </div>
+                <img src="assets/img/rustacean-flat-happy.png" alt="Ferris Mascot"
+                    class="w-full h-full object-contain drop-shadow-2xl">
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-extrabold text-rust mb-6" data-i18n="404_title">404</h1>
+            <p class="text-xl md:text-2xl opacity-80 mb-10 max-w-2xl mx-auto" data-i18n="404_text">
+                This path is Unsafe. We'll drop you back to safety.
+            </p>
+
+            <a href="index.html"
+                class="inline-block bg-rust hover:bg-rust-dark text-white px-8 py-4 rounded-xl font-bold transition-all transform hover:-translate-y-1 shadow-lg shadow-rust/30 hover:shadow-rust/50"
+                data-i18n="404_home_btn">
+                Back to Home
+            </a>
+        </div>
+    </main>
+
+    <oxide-footer></oxide-footer>
+
+</body>
+
+</html>

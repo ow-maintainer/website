@@ -3,7 +3,8 @@ class OxideHeader extends HTMLElement {
         const path = window.location.pathname;
         const isJobs = path.includes('jobs.html');
         const isJobDetail = path.includes('job-detail.html');
-        const isHome = !isJobs && !isJobDetail;
+        const is404 = path.includes('404.html');
+        const isHome = !isJobs && !isJobDetail && !is404;
 
         const prefix = './';
 
