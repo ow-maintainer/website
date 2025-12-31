@@ -7,6 +7,7 @@ window.OXIDE_TRANSLATIONS['de'] = {
     "hero_cta": "Karriere entdecken",
     "services_heading": "Unsere Dienstleistungen",
     "service_launch": "Starten Sie Ihre Idee",
+    "service_startup_special": "Startup-Spezial",
     "service_launch_desc": "Vom Konzept zum MVP. Wir bauen Ihren gesamten Stack mit Geschwindigkeit und Skalierbarkeit.",
     "service_rewrite": "Rust-Rewrites",
     "service_rewrite_desc": "Sichere Migration von Legacy-Systemen auf speichersicheres Hochleistungs-Rust.",

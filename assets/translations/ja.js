@@ -7,6 +7,7 @@ window.OXIDE_TRANSLATIONS['ja'] = {
     "hero_cta": "求人を見る",
     "services_heading": "サービス内容",
     "service_launch": "アイデアを形に",
+    "service_startup_special": "スタートアップ特別",
     "service_launch_desc": "コンセプトからMVPまで。スピードと拡張性を備えたフルスタック開発を提供します。",
     "service_rewrite": "Rustへの書き換え",
     "service_rewrite_desc": "レガシーシステムを、メモリ安全で高性能なRustへと安全に移行します。",

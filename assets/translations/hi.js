@@ -7,6 +7,7 @@ window.OXIDE_TRANSLATIONS['hi'] = {
     "hero_cta": "करियर खोजें",
     "services_heading": "हमारी सेवाएँ",
     "service_launch": "अपने विचार को लॉन्च करें",
+    "service_startup_special": "स्टार्टअप स्पेशल",
     "service_launch_desc": "कॉन्सेप्ट से MVP तक। हम गति और स्केलेबिलिटी के साथ आपका पूरा स्टैक बनाते हैं।",
     "service_rewrite": "Rust रीराइट्स",
     "service_rewrite_desc": "लीगेसी सिस्टम को सुरक्षित रूप से मेमोरी-सेफ, उच्च-प्रदर्शन Rust में स्थानांतरित करें।",

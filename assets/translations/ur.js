@@ -7,6 +7,7 @@ window.OXIDE_TRANSLATIONS['ur'] = {
     "hero_cta": "ملازمتیں تلاش کریں",
     "services_heading": "ہماری خدمات",
     "service_launch": "اپنا آئیڈیا لانچ کریں",
+    "service_startup_special": "اسٹارٹ اپ پیشکش",
     "service_launch_desc": "تصور سے MVP تک۔ ہم رفتار اور اسکیل ایبلٹی کے ساتھ آپ کا پورا اسٹیک بناتے ہیں۔",
     "service_rewrite": "Rust میں دوبارہ لکھنا",
     "service_rewrite_desc": "پرانے سسٹمز کو محفوظ طریقے سے میموری سیف، اعلیٰ کارکردگی والی Rust میں منتقل کریں۔",

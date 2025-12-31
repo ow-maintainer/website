@@ -7,6 +7,7 @@ window.OXIDE_TRANSLATIONS['zh'] = {
     "hero_cta": "探索职位",
     "services_heading": "我们的服务",
     "service_launch": "启动您的构想",
+    "service_startup_special": "初创特惠",
     "service_launch_desc": "从概念到 MVP。我们以超快速度和高扩展性构建您的整个技术栈。",
     "service_rewrite": "Rust 重写",
     "service_rewrite_desc": "将遗留系统安全地迁移到内存安全、高性能的 Rust 环境中。",

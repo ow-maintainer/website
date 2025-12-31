@@ -7,6 +7,7 @@ window.OXIDE_TRANSLATIONS['en'] = {
     "hero_cta": "Explore Jobs",
     "services_heading": "Our Services",
     "service_launch": "Launch Your Idea",
+    "service_startup_special": "Startup Special",
     "service_launch_desc": "From concept to MVP. We build your entire stack with speed and scalability.",
     "service_rewrite": "Rust Rewrites",
     "service_rewrite_desc": "Safely migrate legacy systems to memory-safe, high-performance Rust.",
