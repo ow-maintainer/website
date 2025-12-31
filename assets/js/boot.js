@@ -14,6 +14,13 @@
     // We do NOT reveal body here anymore. We wait for scripts (Tailwind).
     document.head.appendChild(link);
 
+    // 1.5. Inject Favicon
+    const icon = document.createElement('link');
+    icon.rel = 'icon';
+    icon.type = 'image/svg+xml';
+    icon.href = basePath + 'assets/img/logo-icon.svg';
+    document.head.appendChild(icon);
+
     // 2. Load necessary scripts in order
     const scripts = [
         'assets/js/tailwindcss.js',
