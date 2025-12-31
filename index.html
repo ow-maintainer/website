@@ -102,20 +102,56 @@
                                 Startup Special</div>
                             <h3 class="text-4xl md:text-5xl font-bold mb-6" data-i18n="service_launch">Launch Your Idea
                             </h3>
-                            <p class="opacity-70 text-xl leading-relaxed max-w-lg" data-i18n="service_launch_desc">From
-                                concept to MVP. We build your entire stack with speed and scalability.</p>
+                            <p class="opacity-70 text-xl leading-relaxed max-w-lg" data-i18n="service_launch_desc">
+                                Transform your vision into production-ready software. We architect, build, and deploy
+                                your complete solution with enterprise-grade quality.</p>
                         </div>
                         <div class="h-64 flex items-center justify-center">
                             <div class="relative w-full h-full">
-                                <svg viewBox="0 0 400 200" class="w-full h-full stroke-rust fill-none" stroke-width="2">
-                                    <path d="M 40 160 Q 100 160, 160 100 T 300 40" stroke-dasharray="8 8"
-                                        class="opacity-50" />
-                                    <circle cx="40" cy="160" r="6" fill="#009494" />
-                                    <circle cx="300" cy="40" r="6" fill="#009494" />
-                                    <path d="M 280 60 L 300 40 L 320 60" stroke="currentColor" />
-                                </svg>
-                                <div
-                                    class="absolute top-1/3 right-1/4 w-24 h-24 bg-rust/20 rounded-full blur-2xl animate-pulse">
+                                <!-- Rocket Launch Illustration -->
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <!-- Rocket -->
+                                    <div
+                                        class="relative transform group-hover:-translate-y-4 transition-transform duration-700">
+                                        <div class="w-16 h-24 bg-rust rounded-t-full relative">
+                                            <!-- Window -->
+                                            <div
+                                                class="absolute top-4 left-1/2 -translate-x-1/2 w-6 h-6 bg-white/20 rounded-full">
+                                            </div>
+                                            <!-- Fins -->
+                                            <div
+                                                class="absolute -left-4 bottom-0 w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-b-[20px] border-b-rust/70">
+                                            </div>
+                                            <div
+                                                class="absolute -right-4 bottom-0 w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-b-[20px] border-b-rust/70">
+                                            </div>
+                                        </div>
+                                        <!-- Flames -->
+                                        <div
+                                            class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-12 h-12 opacity-80 group-hover:opacity-100 transition-opacity">
+                                            <div
+                                                class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-8 bg-gradient-to-b from-rust to-transparent rounded-full animate-pulse">
+                                            </div>
+                                            <div class="absolute bottom-0 left-1/4 w-2 h-6 bg-gradient-to-b from-rust/70 to-transparent rounded-full animate-pulse"
+                                                style="animation-delay: 0.2s;"></div>
+                                            <div class="absolute bottom-0 right-1/4 w-2 h-6 bg-gradient-to-b from-rust/70 to-transparent rounded-full animate-pulse"
+                                                style="animation-delay: 0.4s;"></div>
+                                        </div>
+                                    </div>
+                                    <!-- Stars/Particles -->
+                                    <div class="absolute top-8 right-20 w-2 h-2 bg-rust/40 rounded-full animate-pulse">
+                                    </div>
+                                    <div class="absolute top-16 right-32 w-1 h-1 bg-rust/30 rounded-full animate-pulse"
+                                        style="animation-delay: 0.3s;"></div>
+                                    <div class="absolute bottom-20 left-20 w-2 h-2 bg-rust/40 rounded-full animate-pulse"
+                                        style="animation-delay: 0.6s;"></div>
+                                    <div class="absolute bottom-12 left-32 w-1 h-1 bg-rust/30 rounded-full animate-pulse"
+                                        style="animation-delay: 0.9s;"></div>
+                                    <!-- Trajectory line -->
+                                    <svg class="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 400 200">
+                                        <path d="M 200 180 Q 220 100, 250 40" stroke="#009494" stroke-width="2"
+                                            stroke-dasharray="8 8" fill="none" class="opacity-50" />
+                                    </svg>
                                 </div>
                             </div>
                         </div>
@@ -127,107 +163,142 @@
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- 2. Backend Services -->
                 <div class="glass-card p-8 rounded-3xl group hover:border-rust/40">
-                    <div class="mb-6 h-32 flex flex-col justify-end">
-                        <div
-                            class="code-window w-full transform group-hover:scale-105 transition-transform duration-500 text-slate-300">
-                            <div class="flex gap-1 mb-2 opacity-50">
-                                <div class="code-dot bg-red-500"></div>
-                                <div class="code-dot bg-yellow-500"></div>
-                                <div class="code-dot bg-green-500"></div>
+                    <div class="mb-6 h-32 flex items-center justify-center relative">
+                        <!-- Server Stack Illustration -->
+                        <div class="relative w-full h-full flex items-center justify-center">
+                            <div
+                                class="absolute w-20 h-3 bg-rust/30 rounded-sm bottom-8 transform group-hover:scale-110 transition-transform">
                             </div>
-                            <div class="text-[10px] space-y-1">
-                                <div><span class="text-purple-400">use</span> <span
-                                        class="text-blue-400">actix_web</span>::{App};</div>
-                                <div class="pl-2">.service(<span class="text-yellow-300">hello</span>)</div>
-                                <div class="text-slate-500">// axum 0.7 ready</div>
-                            </div>
+                            <div class="absolute w-16 h-3 bg-rust/50 rounded-sm bottom-12 transform group-hover:scale-110 transition-transform"
+                                style="transition-delay: 0.05s;"></div>
+                            <div class="absolute w-12 h-3 bg-rust/70 rounded-sm bottom-16 transform group-hover:scale-110 transition-transform"
+                                style="transition-delay: 0.1s;"></div>
+                            <div class="absolute w-8 h-3 bg-rust rounded-sm bottom-20 shadow-[0_0_15px_rgba(0,148,148,0.4)] transform group-hover:scale-110 transition-transform"
+                                style="transition-delay: 0.15s;"></div>
                         </div>
                     </div>
                     <h3 class="text-2xl font-bold mb-4" data-i18n="service_backend">Backend Services</h3>
-                    <p class="opacity-60 text-sm" data-i18n="service_backend_desc">Actix/Axum architectures.</p>
+                    <p class="opacity-60 text-sm" data-i18n="service_backend_desc">Architecting scalable, low-latency
+                        microservices with industrial-grade reliability.</p>
                 </div>
 
                 <!-- 3. Rust Rewrites -->
-                <div class="glass-card p-8 rounded-3xl group">
+                <div class="glass-card p-8 rounded-3xl group hover:border-rust/40">
                     <div class="mb-6 h-32 flex items-center justify-center">
                         <div class="flex gap-4 items-center">
                             <div
-                                class="w-12 h-16 border-2 border-slate-500/30 rounded flex items-center justify-center text-xs text-slate-500 font-mono">
-                                C++</div>
-                            <div class="text-rust">➜</div>
+                                class="w-16 h-20 border-2 border-slate-500/30 rounded flex items-center justify-center text-xs text-slate-500 font-mono transform group-hover:rotate-6 transition-transform">
+                                Legacy
+                            </div>
+                            <div class="text-rust text-2xl transform group-hover:translate-x-2 transition-transform">→
+                            </div>
                             <div
-                                class="w-12 h-16 bg-rust/10 border-2 border-rust rounded flex items-center justify-center text-xs text-rust font-bold font-mono shadow-[0_0_15px_rgba(0,148,148,0.3)]">
-                                Rs</div>
+                                class="w-16 h-20 bg-rust/10 border-2 border-rust rounded flex items-center justify-center text-xs text-rust font-bold font-mono shadow-[0_0_20px_rgba(0,148,148,0.3)] transform group-hover:-rotate-6 transition-transform">
+                                Rust
+                            </div>
                         </div>
                     </div>
                     <h3 class="text-2xl font-bold mb-4" data-i18n="service_rewrite">Rust Rewrites</h3>
-                    <p class="opacity-60 text-sm" data-i18n="service_rewrite_desc">Legacy to Modern.</p>
+                    <p class="opacity-60 text-sm" data-i18n="service_rewrite_desc">Safely migrate legacy systems to
+                        memory-safe, high-performance Rust.</p>
                 </div>
 
-                <!-- 4. IoT -->
-                <div class="glass-card p-8 rounded-3xl group">
+                <!-- 4. Embedded & IoT -->
+                <div class="glass-card p-8 rounded-3xl group hover:border-rust/40">
                     <div class="mb-6 h-32 flex items-center justify-center relative">
-                        <div
-                            class="absolute inset-0 bg-[linear-gradient(rgba(0,148,148,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,148,148,0.1)_1px,transparent_1px)] bg-[size:20px_20px] rounded-xl">
+                        <!-- Microchip Illustration -->
+                        <div class="relative w-24 h-24">
+                            <div
+                                class="absolute inset-0 border-2 border-rust bg-slate-900/50 rounded flex items-center justify-center transform group-hover:scale-105 transition-transform">
+                                <div class="w-12 h-12 border border-rust/50 rounded-sm"></div>
+                            </div>
+                            <!-- Pins -->
+                            <div class="absolute -left-2 top-4 w-2 h-1 bg-rust/60"></div>
+                            <div class="absolute -left-2 top-8 w-2 h-1 bg-rust/60"></div>
+                            <div class="absolute -left-2 top-12 w-2 h-1 bg-rust/60"></div>
+                            <div class="absolute -left-2 top-16 w-2 h-1 bg-rust/60"></div>
+                            <div class="absolute -right-2 top-4 w-2 h-1 bg-rust/60"></div>
+                            <div class="absolute -right-2 top-8 w-2 h-1 bg-rust/60"></div>
+                            <div class="absolute -right-2 top-12 w-2 h-1 bg-rust/60"></div>
+                            <div class="absolute -right-2 top-16 w-2 h-1 bg-rust/60"></div>
                         </div>
-                        <div
-                            class="w-16 h-16 border-2 border-rust bg-slate-900 z-10 rounded flex items-center justify-center">
-                            <div class="w-8 h-8 border border-white/20"></div>
-                        </div>
-                        <div class="absolute top-1/2 left-0 w-full h-[1px] bg-rust/30"></div>
-                        <div class="absolute left-1/2 top-0 w-[1px] h-full bg-rust/30"></div>
                     </div>
                     <h3 class="text-2xl font-bold mb-4" data-i18n="service_iot">Embedded & IoT</h3>
-                    <p class="opacity-60 text-sm" data-i18n="service_iot_desc">Reliable firmware.</p>
+                    <p class="opacity-60 text-sm" data-i18n="service_iot_desc">Developing robust firmware for
+                        resource-constrained devices where reliability is paramount.</p>
                 </div>
 
-                <!-- 5. Audit -->
-                <div class="glass-card p-8 rounded-3xl group">
-                    <div class="mb-6 h-32 flex items-center justify-center">
-                        <div class="relative w-24 h-24">
-                            <div class="absolute inset-0 border-4 border-slate-700 rounded-full"></div>
-                            <div class="absolute inset-0 border-4 border-rust rounded-full border-t-transparent animate-spin"
-                                style="animation-duration:3s"></div>
-                            <div class="absolute inset-0 flex items-center justify-center text-rust text-2xl">✓</div>
+                <!-- 5. Architecture Audits -->
+                <div class="glass-card p-8 rounded-3xl group hover:border-rust/40">
+                    <div class="mb-6 h-32 flex items-center justify-center relative">
+                        <!-- Magnifying Glass over Code -->
+                        <div class="relative w-full h-full flex items-center justify-center">
+                            <!-- Code lines in background -->
+                            <div class="absolute inset-0 flex flex-col justify-center gap-2 px-4 opacity-30">
+                                <div class="h-1 bg-slate-500 rounded w-3/4"></div>
+                                <div class="h-1 bg-slate-500 rounded w-full"></div>
+                                <div class="h-1 bg-rust rounded w-2/3"></div>
+                                <div class="h-1 bg-slate-500 rounded w-5/6"></div>
+                                <div class="h-1 bg-slate-500 rounded w-1/2"></div>
+                            </div>
+                            <!-- Magnifying glass -->
+                            <div class="relative z-10 transform group-hover:scale-110 transition-transform">
+                                <div
+                                    class="w-16 h-16 border-4 border-rust rounded-full bg-white/5 backdrop-blur-sm flex items-center justify-center">
+                                    <div class="text-rust text-2xl font-bold">✓</div>
+                                </div>
+                                <div
+                                    class="absolute -bottom-4 -right-4 w-8 h-2 bg-rust rounded-full transform rotate-45 origin-top-left">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4" data-i18n="service_audit">Architecture Credits</h3>
-                    <p class="opacity-60 text-sm" data-i18n="service_audit_desc">Scalability check.</p>
+                    <h3 class="text-2xl font-bold mb-4" data-i18n="service_audit">Architecture Audits</h3>
+                    <p class="opacity-60 text-sm" data-i18n="service_audit_desc">Deep-dive analysis of your
+                        architecture, identifying bottlenecks and optimization opportunities.</p>
                 </div>
 
-                <!-- 6. Web3 -->
-                <div class="glass-card p-8 rounded-3xl group">
+                <!-- 6. Crypto & Web3 -->
+                <div class="glass-card p-8 rounded-3xl group hover:border-rust/40">
                     <div class="mb-6 h-32 flex items-center justify-center">
                         <div class="relative w-full h-full">
-                            <div class="absolute top-4 left-10 w-3 h-3 bg-rust rounded-full shadow-[0_0_10px_#009494]">
-                            </div>
+                            <!-- Blockchain nodes -->
                             <div
-                                class="absolute top-20 right-10 w-3 h-3 bg-rust rounded-full shadow-[0_0_10px_#009494]">
+                                class="absolute top-6 left-12 w-4 h-4 bg-rust rounded-full shadow-[0_0_12px_#009494] transform group-hover:scale-125 transition-transform">
                             </div>
-                            <div
-                                class="absolute bottom-4 left-1/2 w-3 h-3 bg-rust rounded-full shadow-[0_0_10px_#009494]">
-                            </div>
-                            <svg class="absolute inset-0 w-full h-full stroke-rust/30" stroke-width="1">
-                                <line x1="40" y1="20" x2="180" y2="80" />
-                                <line x1="40" y1="20" x2="100" y2="110" />
-                                <line x1="180" y1="80" x2="100" y2="110" />
+                            <div class="absolute top-20 right-12 w-4 h-4 bg-rust rounded-full shadow-[0_0_12px_#009494] transform group-hover:scale-125 transition-transform"
+                                style="transition-delay: 0.1s;"></div>
+                            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-4 h-4 bg-rust rounded-full shadow-[0_0_12px_#009494] transform group-hover:scale-125 transition-transform"
+                                style="transition-delay: 0.2s;"></div>
+                            <!-- Connections -->
+                            <svg class="absolute inset-0 w-full h-full stroke-rust/40 group-hover:stroke-rust/60 transition-colors"
+                                stroke-width="1.5">
+                                <line x1="50" y1="30" x2="180" y2="85" />
+                                <line x1="50" y1="30" x2="100" y2="110" />
+                                <line x1="180" y1="85" x2="100" y2="110" />
                             </svg>
                         </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4" data-i18n="service_web3">Web3</h3>
-                    <p class="opacity-60 text-sm" data-i18n="service_web3_desc">Smart Contracts.</p>
+                    <h3 class="text-2xl font-bold mb-4" data-i18n="service_web3">Crypto & Web3</h3>
+                    <p class="opacity-60 text-sm" data-i18n="service_web3_desc">Building secure smart contracts and
+                        decentralized protocols on the cutting edge.</p>
                 </div>
 
-                <!-- 7. Training -->
-                <div class="glass-card p-8 rounded-3xl group">
-                    <div class="mb-6 h-32 flex items-end justify-center gap-2">
-                        <div class="w-6 h-8 bg-slate-700 rounded-t"></div>
-                        <div class="w-6 h-12 bg-slate-600 rounded-t"></div>
-                        <div class="w-6 h-16 bg-rust/60 rounded-t"></div>
-                        <div class="w-6 h-24 bg-rust rounded-t shadow-[0_0_15px_rgba(0,148,148,0.5)]"></div>
+                <!-- 7. Team Training -->
+                <div class="glass-card p-8 rounded-3xl group hover:border-rust/40">
+                    <div class="mb-6 h-32 flex items-end justify-center gap-2 pb-4">
+                        <!-- Growth chart -->
+                        <div class="w-8 h-10 bg-slate-700/50 rounded-t transform group-hover:h-12 transition-all"></div>
+                        <div class="w-8 h-16 bg-slate-600/50 rounded-t transform group-hover:h-20 transition-all"
+                            style="transition-delay: 0.05s;"></div>
+                        <div class="w-8 h-24 bg-rust/60 rounded-t transform group-hover:h-28 transition-all"
+                            style="transition-delay: 0.1s;"></div>
+                        <div class="w-8 h-32 bg-rust rounded-t shadow-[0_0_20px_rgba(0,148,148,0.5)] transform group-hover:h-36 transition-all"
+                            style="transition-delay: 0.15s;"></div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4" data-i18n="service_training">Training</h3>
-                    <p class="opacity-60 text-sm" data-i18n="service_training_desc">Upskill teams.</p>
+                    <h3 class="text-2xl font-bold mb-4" data-i18n="service_training">Team Training</h3>
+                    <p class="opacity-60 text-sm" data-i18n="service_training_desc">Upskill your engineering team with
+                        intensive Rust workshops and best-practice coaching.</p>
                 </div>
             </div>
         </div>

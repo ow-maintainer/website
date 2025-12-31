@@ -4,21 +4,22 @@ class OxideHeader extends HTMLElement {
         const isJobs = path.includes('jobs.html');
         const isJobDetail = path.includes('job-detail.html');
         const is404 = path.includes('404.html');
-        const isHome = !isJobs && !isJobDetail && !is404;
+        // isHome is true only for / or index.html
+        const isHome = (path === '/' || path.endsWith('index.html') || path.endsWith('/'));
 
         const prefix = './';
 
         this.innerHTML = `
             <nav class="glass-nav">
                 <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-[1001]">
-                    <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+                    <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='./'">
                         <div class="w-8 h-8 bg-rust rounded-lg flex items-center justify-center font-bold text-white italic text-lg">O</div>
                         <span class="font-bold text-2xl tracking-tight">OXIDEWORKS</span>
                     </div>
 
                     <div class="flex items-center gap-8">
                         <div class="hidden md:flex gap-8 font-medium">
-                            <a href="index.html" class="${isHome ? 'text-rust' : 'hover:text-rust transition-colors'}" data-i18n="nav_home">Home</a>
+                            <a href="./" class="${isHome ? 'text-rust' : 'hover:text-rust transition-colors'}" data-i18n="nav_home">Home</a>
                             <a href="jobs.html" class="${isJobs ? 'text-rust' : 'hover:text-rust transition-colors'}" data-i18n="nav_jobs">Jobs</a>
                         </div>
 
