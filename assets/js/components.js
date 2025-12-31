@@ -2,12 +2,8 @@ class OxideHeader extends HTMLElement {
     connectedCallback() {
         const path = window.location.pathname;
         const isJobs = path.includes('jobs.html');
-        const isJobDetail = path.includes('job-detail.html');
-        const is404 = path.includes('404.html');
         // isHome is true only for / or index.html
         const isHome = (path === '/' || path.endsWith('index.html') || path.endsWith('/'));
-
-        const prefix = './';
 
         const updateLogo = () => {
             const isDark = document.documentElement.classList.contains('dark');
@@ -23,7 +19,8 @@ class OxideHeader extends HTMLElement {
             <nav class="glass-nav">
                 <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between relative z-[1001]">
                     <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='./'">
-                        <img id="header-logo" src="assets/img/logo-light.svg" alt="Oxideworks" class="h-10">
+                        <!-- User requested h-12 -->
+                        <img id="header-logo" src="assets/img/logo-light.svg" alt="Oxideworks" class="h-12">
                     </div>
 
                     <div class="flex items-center gap-8">
@@ -32,8 +29,9 @@ class OxideHeader extends HTMLElement {
                             <a href="jobs.html" class="${isJobs ? 'text-rust' : 'hover:text-rust transition-colors'}" data-i18n="nav_jobs">Jobs</a>
                         </div>
 
-                        <div class="flex items-center gap-4">
-                            <select id="lang-selector" class="bg-transparent border border-rust/20 rounded px-2 py-1 text-sm outline-none">
+                        <!-- Desktop Controls (Hidden on Mobile) -->
+                        <div class="hidden md:flex items-center gap-4">
+                            <select class="lang-selector bg-transparent border border-rust/20 rounded px-2 py-1 text-sm outline-none">
                                 <option value="en">English</option>
                                 <option value="de">Deutsch</option>
                                 <option value="fr">Français</option>
@@ -44,55 +42,81 @@ class OxideHeader extends HTMLElement {
                                 <option value="ja">日本語</option>
                                 <option value="zh">简体中文</option>
                             </select>
-                            <button id="theme-toggle" class="p-2 rounded-full hover:bg-white/10 transition-colors flex items-center justify-center text-sm font-medium">
+                            <button class="theme-toggle-btn p-2 rounded-full hover:bg-white/10 transition-colors flex items-center justify-center text-sm font-medium">
                                 <!-- Icon will be injected by main.js -->
                             </button>
-                            
-                            <!-- Mobile Menu Button -->
-                            <button id="mobile-menu-btn" class="md:hidden p-2 hover:bg-white/10 rounded-lg transition-colors text-rust">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                                </svg>
-                            </button>
                         </div>
+                            
+                        <!-- Mobile Menu Button (Hidden on Desktop) -->
+                        <button id="mobile-menu-btn" class="md:hidden p-2 hover:bg-white/10 rounded-lg transition-colors text-rust">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-
-                <!-- Mobile Menu Overlay -->
-                <div id="mobile-menu" class="fixed inset-0 bg-slate-900/95 backdrop-blur-lg z-[2000] transform transition-transform duration-300 translate-x-full md:hidden flex flex-col items-center justify-center gap-6 opacity-0 pointer-events-none">
-                   <button id="close-menu-btn" class="absolute top-8 right-6 p-2 hover:bg-white/10 rounded-lg text-rust">
-                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                      </svg>
-                   </button>
-                   <a href="./" class="text-lg font-semibold ${isHome ? 'text-rust' : 'text-white hover:text-rust'} transition-colors" data-i18n="nav_home">Home</a>
-                   <a href="jobs.html" class="text-lg font-semibold ${isJobs ? 'text-rust' : 'text-white hover:text-rust'} transition-colors" data-i18n="nav_jobs">Jobs</a>
-                </div>
             </nav>
+
+            <!-- Mobile Menu Overlay -->
+            <!-- Moved outside nav to avoid stacking context/clipping issues with fixed position -->
+            <div id="mobile-menu" class="fixed inset-0 bg-slate-900/95 backdrop-blur-lg z-[2000] transform transition-transform duration-300 translate-x-full md:hidden flex flex-col items-center justify-center gap-6 opacity-0 pointer-events-none">
+                <button id="close-menu-btn" class="absolute top-8 right-6 p-2 hover:bg-white/10 rounded-lg text-rust">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <a href="./" class="text-3xl font-bold ${isHome ? 'text-rust' : 'text-white hover:text-rust'} transition-colors" data-i18n="nav_home">Home</a>
+                <a href="jobs.html" class="text-3xl font-bold ${isJobs ? 'text-rust' : 'text-white hover:text-rust'} transition-colors" data-i18n="nav_jobs">Jobs</a>
+
+                <!-- Mobile Controls (Language & Theme) -->
+                <div class="flex items-center gap-6 mt-8">
+                    <select class="lang-selector bg-transparent border border-rust/50 rounded px-4 py-2 text-lg outline-none text-white">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="fr">Français</option>
+                        <option value="ar">العربية</option>
+                        <option value="es">Español</option>
+                        <option value="hi">हिन्दी</option>
+                        <option value="ur">اردو</option>
+                        <option value="ja">日本語</option>
+                        <option value="zh">简体中文</option>
+                    </select>
+                    <button class="theme-toggle-btn p-3 rounded-full hover:bg-white/10 transition-colors flex items-center justify-center text-white border border-rust/50">
+                        <!-- Icon will be injected by main.js -->
+                    </button>
+                </div>
+            </div>
         `;
 
         // Mobile Menu Logic
-        const mobileBtn = this.querySelector('#mobile-menu-btn');
-        const closeBtn = this.querySelector('#close-menu-btn');
-        const mobileMenu = this.querySelector('#mobile-menu');
+        // Use setTimeout to ensure DOM is ready (defensive)
+        setTimeout(() => {
+            const mobileBtn = this.querySelector('#mobile-menu-btn');
+            const closeBtn = this.querySelector('#close-menu-btn');
+            const mobileMenu = this.querySelector('#mobile-menu');
 
-        const toggleMenu = (show) => {
-            if (show) {
-                mobileMenu.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            if (mobileBtn && closeBtn && mobileMenu) {
+                const toggleMenu = (show) => {
+                    if (show) {
+                        mobileMenu.classList.remove('translate-x-full', 'opacity-0', 'pointer-events-none');
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        mobileMenu.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
+                        document.body.style.overflow = '';
+                    }
+                };
+
+                mobileBtn.addEventListener('click', () => toggleMenu(true));
+                closeBtn.addEventListener('click', () => toggleMenu(false));
+
+                // Close on link click
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => toggleMenu(false));
+                });
             } else {
-                mobileMenu.classList.add('translate-x-full', 'opacity-0', 'pointer-events-none');
-                document.body.style.overflow = '';
+                console.error('Mobile menu elements not found inside oxide-header');
             }
-        };
-
-        mobileBtn.addEventListener('click', () => toggleMenu(true));
-        closeBtn.addEventListener('click', () => toggleMenu(false));
-
-        // Close on link click
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => toggleMenu(false));
-        });
+        }, 0);
 
         // Initialize logo based on current theme
         updateLogo();
